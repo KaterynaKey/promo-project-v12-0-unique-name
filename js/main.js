@@ -5,7 +5,7 @@ function italicLinks(htmlContent) {
     htmlContent = htmlContent.replace(/<a[^>]*>/gi, '').replace(/<\/a>/gi, '');
     blueColors.forEach((color, index) => {
         const regex = new RegExp(`<span[^>]*style="[^"]*color:\\s*${color}[^"]*;[^"]*font-style:\\s*italic[^"]*"[^>]*>(.*?)<\\/span>`, 'gi');
-        htmlContent = htmlContent.replace(regex, '<a href="insertlink" style="font-family:\'Roboto\', Arial, Helvetica, sans-serif;text-decoration: underline;font-weight: 700;"><em>$1</em></a>');
+        htmlContent = htmlContent.replace(regex, '<a href="insertlink" style="font-family:\'Roboto\', Arial, Helvetica, sans-serif;text-decoration: underline;font-weight: 700;color: #0000EE;"><em>$1</em></a>');
     });
 
     return htmlContent;
@@ -14,11 +14,22 @@ function italicLinks(htmlContent) {
 function linksStyles(htmlContent) {
     blueColors.forEach((color, index) => {
         const reg = new RegExp(`<span[^>]*style="[^"]*color:\\s*(${color})[^"]*"[^>]*>(.*?)<\\/span>`, 'gi');
-        htmlContent = htmlContent.replace(reg, '<a href="insertlink" style="font-family:\'Roboto\', Arial, Helvetica, sans-serif;text-decoration: underline;font-weight: 700;">$2</a>');
+        htmlContent = htmlContent.replace(reg, '<a href="insertlink" style="font-family:\'Roboto\', Arial, Helvetica, sans-serif;text-decoration: underline;font-weight: 700;color: #0000EE;">$2</a>');
     });
 
     return htmlContent;
 }
+
+function replaceAllEmojisAndSymbolsExcludingHTML(htmlContent) {
+    const rx = /(?:\p{Extended_Pictographic}|(?![<>=&%"'#;:_-])[\p{S}\p{No}])(?:\uFE0F)?/gu;
+
+    return htmlContent.replace(rx, match => {
+        return Array.from(match)
+            .map(ch => `&#${ch.codePointAt(0)};`)
+            .join('');
+    });
+}
+
 
 function processStyles(htmlContent) {
     htmlContent = htmlContent.replace(/<b[^>]*>/gi, '').replace(/<\/b>/gi, '');
@@ -249,7 +260,7 @@ function wrapRightSideImg(htmlContent) {
                   <a align="right" href="insertlink" target="_blank" style="display: inline-block; float: right; width: 50%; max-width: 50%; margin-left: 18px; margin-bottom: 12px;">
                     <img alt="Preview" height="224"
                          align="right"
-                         src="/preview"
+                         src="https://storage.5th-elementagency.com/files/Promo/organic/"
                          style="border:0;display:inline-block;outline:none;text-decoration:none;height:auto;max-height: 224px;max-width: 100%; width: 100%;font-size:13px;object-fit: contain;"
                          width="250"/>
                   </a>
@@ -279,8 +290,8 @@ function wrapLeftSideImg(htmlContent) {
                 <td align="left" style="font-family:'Roboto', Arial, Helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;line-height:1.5;text-align:left;color:#000000;padding-bottom: 14px; padding-top: 14px;">
                   <a align="left" href="insertlink" target="_blank" style="display: inline-block; float: left; width: 50%; max-width: 50%; margin-right: 18px; margin-bottom: 12px;">
                     <img alt="Preview" height="224"
-                         align="right"
-                         src="/preview"
+                         align="left"
+                         src="https://storage.5th-elementagency.com/files/Promo/organic/"
                          style="border:0;display:inline-block;outline:none;text-decoration:none;height:auto;max-height: 224px;max-width: 100%; width: 100%;font-size:13px;object-fit: contain;"
                          width="250"/>
                   </a>
@@ -308,7 +319,7 @@ function wrapSignatureImg(htmlContent) {
             <tr>
                 <td class="image-block" align="left" style="padding-top: 15px; padding-bottom: 15px;">
                    <img alt="Signature" height="auto"
-                        src="/preview"
+                        src="https://storage.5th-elementagency.com/files/Promo/organic/"
                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:220px;max-width: 220px;font-size:13px;"
                         width="220"/>
                 </td>
@@ -534,7 +545,7 @@ function wrapTextInSpan(htmlContent) {
                        <td class="image-block" align="center" style="padding-top: 15px; padding-bottom: 15px;">
                            <a href="insertlink" target="_blank">
                                <img alt="Video preview" height="auto"
-                                    src="/preview"
+                                    src="https://storage.5th-elementagency.com/files/Promo/organic/"
                                     style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;max-width: 560px;font-size:13px;"
                                     width="560"/>
                            </a>
@@ -646,6 +657,7 @@ function exportHTML() {
     let editorContent = document.getElementById('editor').innerHTML;
     editorContent = italicLinks(editorContent);
     editorContent = linksStyles(editorContent);
+    editorContent = replaceAllEmojisAndSymbolsExcludingHTML(editorContent);
     editorContent = processStyles(editorContent);
     editorContent = wrapCenterTextHtml(editorContent);
     editorContent = wrapSmallCenterTextHtml(editorContent);
@@ -666,6 +678,7 @@ function exportHTML() {
     document.getElementById('output').value = editorContent;
 }
 
+/*--filename update---*/
 function downloadFile(content) {
     const fileName = document.getElementById('fileName').value.replace(/\s+/g, '').toUpperCase();
 
@@ -681,6 +694,12 @@ function downloadFile(content) {
     URL.revokeObjectURL(a.href);
 }
 
+
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    const editableText = document.getElementById("output").value;
+    downloadFile(editableText);
+});
+/*--filename update---*/
 
 document.getElementById("downloadBtn").addEventListener("click", function () {
     const editableText = document.getElementById("output").value;
@@ -702,7 +721,7 @@ function wrapTextInMjmlTags(htmlContent) {
                             <tr>
                               <td style="width:550px;">
                                 <a href="insertlink" target="_blank">
-                                  <img alt="Video preview" src="/preview" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" height="auto" />
+                                  <img alt="Video preview" src="https://storage.5th-elementagency.com/files/Promo/organic/" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" height="auto" />
                                 </a>
                               </td>
                             </tr>
@@ -796,6 +815,9 @@ document.getElementById("mjmlDownloadBtn").addEventListener("click", function ()
     const editableText = document.getElementById("mjmlOutput").value;
     downloadMjmlFile(editableText);
 });
+
+
+
 
 /*-----File name update-----*/
 function changeNumber(amount) {
