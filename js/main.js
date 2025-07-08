@@ -701,10 +701,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
 });
 /*--filename update---*/
 
-document.getElementById("downloadBtn").addEventListener("click", function () {
-    const editableText = document.getElementById("output").value;
-    downloadFile(editableText);
-});
+
 //end html js code
 
 //mjml
