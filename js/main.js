@@ -260,7 +260,7 @@ function wrapRightSideImg(htmlContent) {
                   <a align="right" href="insertlink" target="_blank" style="display: inline-block; float: right; width: 50%; max-width: 50%; margin-left: 18px; margin-bottom: 12px;">
                     <img alt="Preview" height="224"
                          align="right"
-                         src="https://storage.5th-elementagency.com/files/Promo/organic/"
+                         src="https://ogfinstorage.com/files/creatives/"
                          style="border:0;display:inline-block;outline:none;text-decoration:none;height:auto;max-height: 224px;max-width: 100%; width: 100%;font-size:13px;object-fit: contain;"
                          width="250"/>
                   </a>
@@ -291,7 +291,7 @@ function wrapLeftSideImg(htmlContent) {
                   <a align="left" href="insertlink" target="_blank" style="display: inline-block; float: left; width: 50%; max-width: 50%; margin-right: 18px; margin-bottom: 12px;">
                     <img alt="Preview" height="224"
                          align="left"
-                         src="https://storage.5th-elementagency.com/files/Promo/organic/"
+                         src="https://ogfinstorage.com/files/creatives/"
                          style="border:0;display:inline-block;outline:none;text-decoration:none;height:auto;max-height: 224px;max-width: 100%; width: 100%;font-size:13px;object-fit: contain;"
                          width="250"/>
                   </a>
@@ -319,7 +319,7 @@ function wrapSignatureImg(htmlContent) {
             <tr>
                 <td class="image-block" align="left" style="padding-top: 15px; padding-bottom: 15px;">
                    <img alt="Signature" height="auto"
-                        src="https://storage.5th-elementagency.com/files/Promo/organic/"
+                        src="https://ogfinstorage.com/files/creatives/"
                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:220px;max-width: 220px;font-size:13px;"
                         width="220"/>
                 </td>
@@ -545,7 +545,7 @@ function wrapTextInSpan(htmlContent) {
                        <td class="image-block" align="center" style="padding-top: 15px; padding-bottom: 15px;">
                            <a href="insertlink" target="_blank">
                                <img alt="Video preview" height="auto"
-                                    src="https://storage.5th-elementagency.com/files/Promo/organic/"
+                                    src="https://ogfinstorage.com/files/creatives/"
                                     style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;max-width: 560px;font-size:13px;"
                                     width="560"/>
                            </a>
@@ -718,7 +718,7 @@ function wrapTextInMjmlTags(htmlContent) {
                             <tr>
                               <td style="width:550px;">
                                 <a href="insertlink" target="_blank">
-                                  <img alt="Video preview" src="https://storage.5th-elementagency.com/files/Promo/organic/" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" height="auto" />
+                                  <img alt="Video preview" src="https://ogfinstorage.com/files/creatives/" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" height="auto" />
                                 </a>
                               </td>
                             </tr>
