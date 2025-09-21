@@ -342,6 +342,29 @@ function addOneBr(htmlContent) {
     });
 }
 
+function replaceTripleBrWithSingle (htmlContent) {
+    const BR = `<br>\n`;
+    htmlContent = htmlContent.replace(
+        /<\w+[^>]*>\s*<\w+[^>]*>\s*<br\s*\/?>\s*<\/\w+>\s*<\/\w+>/gi,
+        BR
+    );
+
+
+    htmlContent = htmlContent.replace(
+        /<\w+[^>]*>\s*<br\s*\/?>\s*<\/\w+>/gi,
+        BR
+    );
+
+    htmlContent = htmlContent.replace(
+        /\s*<br\s*\/?>\s*<\/(\w+)>/gi,
+        '</$1><br>'
+    );
+
+
+    htmlContent = htmlContent.replace(/(?:<br\s*\/?>\s*){3,}/gi, BR);
+
+    return htmlContent;
+}
 //one br end
 
 //end html js code
@@ -685,6 +708,7 @@ function exportHTML() {
     editorContent = cleanEmptyHtmlTags(editorContent);
     editorContent = wrapContentInFullTableStructure(editorContent);
     editorContent = addOneBr(editorContent);
+    editorContent = replaceTripleBrWithSingle(editorContent);
     document.getElementById('output').value = editorContent;
 }
 
