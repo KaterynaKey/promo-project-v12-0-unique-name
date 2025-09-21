@@ -343,11 +343,11 @@ function addOneBr(htmlContent) {
 }
 
 //one br end
+
 //end html js code
 
 
 //mjml js code
-
 function wrapSmallCenterTextMjml(htmlContent) {
     return htmlContent.replace(/<h6[^>]*style="[^"]*text-align:\s*center[^"]*"[^>]*>([\s\S]*?)<\/h6>/gi, function (match, content) {
         return `
