@@ -333,7 +333,16 @@ function wrapSignatureImg(htmlContent) {
 
 //signature-img-end
 
+//one br start
+function addOneBr(htmlContent) {
+    return htmlContent.replace(/ю/gi, function (match, content) {
+        return `
+                    <br>
+        `;
+    });
+}
 
+//one br end
 //end html js code
 
 
@@ -675,6 +684,7 @@ function exportHTML() {
     editorContent = wrapSignatureImg(editorContent);
     editorContent = cleanEmptyHtmlTags(editorContent);
     editorContent = wrapContentInFullTableStructure(editorContent);
+    editorContent = addOneBr(editorContent);
     document.getElementById('output').value = editorContent;
 }
 
